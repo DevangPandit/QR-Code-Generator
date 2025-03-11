@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>QR Code Generator</h1>
+        <form action="/generate_qr" method="post">
+            <input type="url" name="url" placeholder="Enter your URL..." required>
+            <button type="submit">Generate</button>
+        </form>
+
+        {% if qr_code %}
+            <img src="{{ url_for('static', filename=qr_code) }}" alt="QR Code">
+            <br>
+            <a href="{{ url_for('static', filename=qr_code) }}" download="qr_code.png">Download QR Code</a>
+        {% endif %}
+    </div>
+    
+</body>
+</html>
